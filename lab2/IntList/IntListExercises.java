@@ -9,10 +9,12 @@ public class IntListExercises {
      * @param lst IntList from Lecture
      */
     public static void addConstant(IntList lst, int c) {
-        IntList head = lst;
-        while (head != null) {
-            head.first += c;
-            head = head.rest;
+        if (c > 0) {
+            IntList head = lst;
+            while (head != null) {
+                head.first += c;
+                head = head.rest;
+            }
         }
     }
 
@@ -33,7 +35,9 @@ public class IntListExercises {
         }
     }
 
-    /** Returns the max value in the IntList starting at L. */
+    /**
+     * Returns the max value in the IntList starting at L.
+     */
     public static int max(IntList L) {
         int max = L.first;
         IntList p = L.rest;
@@ -46,8 +50,9 @@ public class IntListExercises {
         return max;
     }
 
-    /** Returns true if the last digit of x is equal to
-     *  the first digit of x.
+    /**
+     * Returns true if the last digit of x is equal to
+     * the first digit of x.
      */
     public static boolean firstDigitEqualsLastDigit(int x) {
         int lastDigit = x % 10;
