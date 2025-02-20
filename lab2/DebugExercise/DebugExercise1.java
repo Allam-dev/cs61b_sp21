@@ -5,8 +5,8 @@ package DebugExercise;
  * feature work.
  */
 public class DebugExercise1 {
-    public static int divideThenRound(double top, double bottom) {
-        double quotient = top / bottom;
+    public static int divideThenRound(int top, int bottom) {
+        double quotient = (double) top / bottom;
         int result = (int) Math.round(quotient);
         return result;
     }
