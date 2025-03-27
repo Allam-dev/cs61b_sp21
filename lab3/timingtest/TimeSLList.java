@@ -29,7 +29,7 @@ public class TimeSLList {
 
         for(int i = 1000; i<=256000; i*=2) {
             Ns.addLast(i);
-            ops.addLast(1000);
+            ops.addLast(10000);
         }
 
 
