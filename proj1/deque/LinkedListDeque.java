@@ -73,7 +73,6 @@ public class LinkedListDeque<T> implements Deque<T> {
     }
 
 
-
     public T getRecursive(int index) {
         return getRecursiveHelper(index, sentinel.next);
     }
