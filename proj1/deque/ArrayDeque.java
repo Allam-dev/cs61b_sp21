@@ -15,6 +15,16 @@ public class ArrayDeque<T> implements Deque<T> {
         lastIndex = 0;
     }
 
+
+    @Override
+    public void printDeque() {
+        String[] items = new String[size];
+        for (int i = 0; i < size(); i++) {
+            items[i] = get(i).toString();
+        }
+        System.out.print('{' + String.join(", ", items) + '}');
+    }
+
     @Override
     public void addFirst(T item) {
         extendArray();
@@ -122,66 +132,4 @@ public class ArrayDeque<T> implements Deque<T> {
         }
     }
 
-
-    private class ArrayDequeIterator implements Iterator<T> {
-
-        private int index = 0;
-
-        @Override
-        public boolean hasNext() {
-            return index < size;
-        }
-
-        @Override
-        public T next() {
-            if (index < size) {
-                get(index++);
-            }
-            return null;
-        }
-    }
-
-
-    public static void main(String[] args) {
-        ArrayDeque<Integer> deque = new ArrayDeque<>();
-        deque.addFirst(1);
-        deque.addFirst(2);
-        deque.addFirst(3);
-        deque.addLast(4);
-        deque.addLast(5);
-        deque.addLast(6);
-        deque.addLast(7);
-        deque.addLast(8);
-        deque.addLast(9);
-        deque.addLast(10);
-        deque.addLast(11);
-        deque.addLast(12);
-        deque.removeFirst();
-        deque.removeLast();
-        deque.removeLast();
-        deque.removeFirst();
-
-        ArrayDeque<Integer> deque2 = new ArrayDeque<>();
-        deque2.addFirst(0);
-        deque2.addFirst(2);
-        deque2.addFirst(3);
-        deque2.addLast(4);
-        deque2.addLast(5);
-        deque2.addLast(6);
-        deque2.addLast(7);
-        deque2.addLast(8);
-        deque2.addLast(9);
-        deque2.addLast(10);
-        deque2.addLast(11);
-        deque2.addLast(12);
-        deque2.removeFirst();
-        deque2.removeLast();
-        deque2.removeLast();
-        deque2.removeFirst();
-
-        System.out.println("deque1 equals deque2: " + deque2.equals(deque));
-
-
-        deque.printDeque();
-    }
 }

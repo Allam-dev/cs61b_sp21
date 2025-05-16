@@ -83,6 +83,17 @@ public class LinkedListDeque<T> implements Deque<T> {
         return getRecursiveHelper(index - 1, node.next);
     }
 
+
+
+    @Override
+    public void printDeque() {
+        String[] items = new String[size];
+        for (int i = 0; i < size(); i++) {
+            items[i] = get(i).toString();
+        }
+        System.out.print('{' + String.join(", ", items) + '}');
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

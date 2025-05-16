@@ -11,13 +11,7 @@ public interface Deque<T> extends Iterable<T> {
 
     public int size();
 
-    default public void printDeque() {
-        String[] items = new String[size()];
-        for (int i = 0; i < size(); i++) {
-            items[i] = get(i).toString();
-        }
-        System.out.print('{' + String.join(", ", items) + '}');
-    }
+    public void printDeque();
 
     public T removeFirst();
 
