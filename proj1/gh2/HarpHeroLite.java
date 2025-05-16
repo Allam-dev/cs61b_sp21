@@ -6,7 +6,7 @@ import edu.princeton.cs.algs4.StdDraw;
 /**
  * A client that uses the synthesizer package to replicate a plucked guitar string sound
  */
-public class GuitarHeroLite {
+public class HarpHeroLite {
     public static final double CONCERT_A = 440.0;
     private static final String keyboard = "q2we4r5ty7u8i9op-[=zxdcfvgbnjmk,.;/' ";
     private static final int keyboardLength = keyboard.length();
@@ -18,10 +18,10 @@ public class GuitarHeroLite {
     public static void main(String[] args) {
 
 
-        GuitarString[] guitars = new GuitarString[keyboardLength];
+        HarpString[] harps = new HarpString[keyboardLength];
 
         for (int i = 0; i < keyboardLength; i++) {
-            guitars[i] = new GuitarString(getFrequency(i));
+            harps[i] = new HarpString(getFrequency(i));
         }
         int keyIndex = 0;
         while (true) {
@@ -31,14 +31,14 @@ public class GuitarHeroLite {
 
                 if (keyboard.contains(String.valueOf(key))) {
                     keyIndex = keyboard.indexOf(key);
-                    guitars[keyIndex].pluck();
+                    harps[keyIndex].pluck();
                 }
             }
 
 
-            StdAudio.play(guitars[keyIndex].sample());
+            StdAudio.play(harps[keyIndex].sample());
 
-            guitars[keyIndex].tic();
+            harps[keyIndex].tic();
         }
     }
 }
