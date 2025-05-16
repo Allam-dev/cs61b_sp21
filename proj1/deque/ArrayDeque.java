@@ -40,10 +40,6 @@ public class ArrayDeque<T> implements Deque<T> {
         return size;
     }
 
-    @Override
-    public void printDeque() {
-
-    }
 
     @Override
     public T removeFirst() {
@@ -74,7 +70,12 @@ public class ArrayDeque<T> implements Deque<T> {
         if (index < 0 || index >= size)
             return null;
         else
-            return arr[index];
+            return arr[firstIndex + index];
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return null;
     }
 
 
@@ -122,6 +123,25 @@ public class ArrayDeque<T> implements Deque<T> {
     }
 
 
+    private class ArrayDequeIterator implements Iterator<T> {
+
+        private int index = 0;
+
+        @Override
+        public boolean hasNext() {
+            return index < size;
+        }
+
+        @Override
+        public T next() {
+            if (index < size) {
+                get(index++);
+            }
+            return null;
+        }
+    }
+
+
     public static void main(String[] args) {
         ArrayDeque<Integer> deque = new ArrayDeque<>();
         deque.addFirst(1);
@@ -140,5 +160,28 @@ public class ArrayDeque<T> implements Deque<T> {
         deque.removeLast();
         deque.removeLast();
         deque.removeFirst();
+
+        ArrayDeque<Integer> deque2 = new ArrayDeque<>();
+        deque2.addFirst(0);
+        deque2.addFirst(2);
+        deque2.addFirst(3);
+        deque2.addLast(4);
+        deque2.addLast(5);
+        deque2.addLast(6);
+        deque2.addLast(7);
+        deque2.addLast(8);
+        deque2.addLast(9);
+        deque2.addLast(10);
+        deque2.addLast(11);
+        deque2.addLast(12);
+        deque2.removeFirst();
+        deque2.removeLast();
+        deque2.removeLast();
+        deque2.removeFirst();
+
+        System.out.println("deque1 equals deque2: " + deque2.equals(deque));
+
+
+        deque.printDeque();
     }
 }
