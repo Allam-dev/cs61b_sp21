@@ -15,7 +15,6 @@ public class LinkedListDeque<T> implements Deque<T> {
     }
 
 
-
     public void addFirst(T item) {
         Node<T> newNode = new Node<>(item, sentinel.next, sentinel);
         sentinel.next.prev = newNode;
@@ -23,7 +22,7 @@ public class LinkedListDeque<T> implements Deque<T> {
         size++;
     }
 
-    @Override
+
     public void addLast(T item) {
         Node<T> newNode = new Node<>(item, sentinel, sentinel.prev);
         sentinel.prev.next = newNode;
@@ -31,12 +30,12 @@ public class LinkedListDeque<T> implements Deque<T> {
         size++;
     }
 
-    @Override
+
     public int size() {
         return size;
     }
 
-    @Override
+
     public T removeFirst() {
         T first = sentinel.next.value;
         if (size > 0) {
@@ -47,7 +46,7 @@ public class LinkedListDeque<T> implements Deque<T> {
         return first;
     }
 
-    @Override
+
     public T removeLast() {
         T last = sentinel.prev.value;
         if (size > 0) {
@@ -58,7 +57,7 @@ public class LinkedListDeque<T> implements Deque<T> {
         return last;
     }
 
-    @Override
+
     public T get(int index) {
         Node<T> node = sentinel.next;
         for (int i = 0; i < index; i++) {
@@ -67,7 +66,7 @@ public class LinkedListDeque<T> implements Deque<T> {
         return node.value;
     }
 
-    @Override
+
     public Iterator<T> iterator() {
         return new LinedListDequeIterator();
     }
@@ -84,8 +83,6 @@ public class LinkedListDeque<T> implements Deque<T> {
     }
 
 
-
-    @Override
     public void printDeque() {
         String[] items = new String[size];
         for (int i = 0; i < size(); i++) {
@@ -94,7 +91,7 @@ public class LinkedListDeque<T> implements Deque<T> {
         System.out.print('{' + String.join(", ", items) + '}');
     }
 
-    @Override
+
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -131,12 +128,12 @@ public class LinkedListDeque<T> implements Deque<T> {
         int index = 0;
         Node<T> current = sentinel;
 
-        @Override
+
         public boolean hasNext() {
             return index < size;
         }
 
-        @Override
+
         public T next() {
             if (index < size) {
                 current = current.next;

@@ -16,6 +16,25 @@ public class ArrayDeque<T> implements Deque<T> {
     }
 
 
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o instanceof ArrayDeque) {
+            ArrayDeque<T> other = (ArrayDeque<T>) o;
+            if (size != other.size()) {
+                return false;
+            }
+            for (int i = 0; i < size; i++) {
+                if (get(i) != other.get(i)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
     public void printDeque() {
         String[] items = new String[size];
         for (int i = 0; i < size(); i++) {
@@ -128,12 +147,12 @@ public class ArrayDeque<T> implements Deque<T> {
         private int index = firstIndex;
         private int counter = 0;
 
-        @Override
+
         public boolean hasNext() {
             return counter < size;
         }
 
-        @Override
+
         public T next() {
             if (counter < size) {
                 counter++;
