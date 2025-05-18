@@ -16,7 +16,6 @@ public class ArrayDeque<T> implements Deque<T> {
     }
 
 
-    @Override
     public void printDeque() {
         String[] items = new String[size];
         for (int i = 0; i < size(); i++) {
@@ -25,7 +24,6 @@ public class ArrayDeque<T> implements Deque<T> {
         System.out.print('{' + String.join(", ", items) + '}');
     }
 
-    @Override
     public void addFirst(T item) {
         extendArray();
         if (arr[firstIndex] != null) {
@@ -35,7 +33,6 @@ public class ArrayDeque<T> implements Deque<T> {
         size++;
     }
 
-    @Override
     public void addLast(T item) {
         extendArray();
         if (arr[lastIndex] != null) {
@@ -45,13 +42,11 @@ public class ArrayDeque<T> implements Deque<T> {
         size++;
     }
 
-    @Override
     public int size() {
         return size;
     }
 
 
-    @Override
     public T removeFirst() {
         T first = arr[firstIndex];
         if (first != null) {
@@ -63,7 +58,6 @@ public class ArrayDeque<T> implements Deque<T> {
         return first;
     }
 
-    @Override
     public T removeLast() {
         T last = arr[lastIndex];
         if (last != null) {
@@ -75,17 +69,11 @@ public class ArrayDeque<T> implements Deque<T> {
         return last;
     }
 
-    @Override
     public T get(int index) {
         if (index < 0 || index >= size)
             return null;
         else
             return arr[firstIndex + index];
-    }
-
-    @Override
-    public Iterator<T> iterator() {
-        return null;
     }
 
 
@@ -132,4 +120,26 @@ public class ArrayDeque<T> implements Deque<T> {
         }
     }
 
+    public Iterator<T> iterator() {
+        return new ArrayDequeIterator();
+    }
+
+    private class ArrayDequeIterator implements Iterator<T> {
+        private int index = firstIndex;
+        private int counter = 0;
+
+        @Override
+        public boolean hasNext() {
+            return counter < size;
+        }
+
+        @Override
+        public T next() {
+            if (counter < size) {
+                counter++;
+                return arr[index++];
+            }
+            return null;
+        }
+    }
 }
