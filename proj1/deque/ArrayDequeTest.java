@@ -10,8 +10,7 @@ public class ArrayDequeTest {
     /** Adds a few things to the list, checking isEmpty() and size() are correct,
      * finally printing the results.
      *
-     * && is the "and" operation. */
-    public void addIsEmptySizeTest() {
+     * && is the "and" operation. */ public void addIsEmptySizeTest() {
 
         System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
 
@@ -37,8 +36,7 @@ public class ArrayDequeTest {
     }
 
     @Test
-    /** Adds an item, then removes an item, and ensures that dll is empty afterwards. */
-    public void addRemoveTest() {
+    /** Adds an item, then removes an item, and ensures that dll is empty afterwards. */ public void addRemoveTest() {
 
         System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
 
@@ -57,8 +55,7 @@ public class ArrayDequeTest {
     }
 
     @Test
-    /* Tests removing from an empty deque */
-    public void removeEmptyTest() {
+    /* Tests removing from an empty deque */ public void removeEmptyTest() {
 
         System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
 
@@ -80,8 +77,7 @@ public class ArrayDequeTest {
     }
 
     @Test
-    /* Check if you can create ArrayDeques with different parameterized types*/
-    public void multipleParamTest() {
+    /* Check if you can create ArrayDeques with different parameterized types*/ public void multipleParamTest() {
 
 
         ArrayDeque<String> lld1 = new ArrayDeque<String>();
@@ -99,8 +95,7 @@ public class ArrayDequeTest {
     }
 
     @Test
-    /* check if null is return when removing from an empty ArrayDeque. */
-    public void emptyNullReturnTest() {
+    /* check if null is return when removing from an empty ArrayDeque. */ public void emptyNullReturnTest() {
 
         System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
 
@@ -115,8 +110,7 @@ public class ArrayDequeTest {
     }
 
     @Test
-    /* Add large number of elements to deque; check if order is correct. */
-    public void bigLLDequeTest() {
+    /* Add large number of elements to deque; check if order is correct. */ public void bigLLDequeTest() {
 
         System.out.println("Make sure to uncomment the lines below (and delete this print statement).");
 
@@ -134,5 +128,143 @@ public class ArrayDequeTest {
         }
 
 
+    }
+
+    @Test
+    public void testIterator() {
+        ArrayDeque<Integer> arr = new ArrayDeque<Integer>();
+        for (int i = 0; i <= 100; i++) {
+            arr.addLast(i);
+        }
+        arr.removeLast();
+        for (Integer x : arr) {
+            System.out.println(x);
+        }
+    }
+
+    @Test
+    public void testEqualsDifferentObject() {
+        ArrayDeque<String> arr = new ArrayDeque<>();
+        String x = "hi";
+        assertEquals(false, arr.equals(x));
+    }
+
+    @Test
+    public void testEqualsDifferentGenericTypeWithSameLength() {
+
+        ArrayDeque<Integer> arr1 = new ArrayDeque<>();
+        ArrayDeque<String> arr2 = new ArrayDeque<>();
+
+        for (int i = 0; i < 100; i++) {
+            arr1.addFirst(i);
+            arr2.addFirst(String.valueOf(i));
+        }
+        assertEquals(false, arr1.equals(arr2));
+
+    }
+
+    @Test
+    public void testEqualsDifferentGenericTypeWithDifferentLength() {
+        ArrayDeque<Integer> arr1 = new ArrayDeque<>();
+        ArrayDeque<String> arr2 = new ArrayDeque<>();
+
+        for (int i = 0; i < 100; i++) {
+            arr1.addFirst(i);
+        }
+
+        for (int i = 0; i < 50; i++) {
+            arr2.addFirst(String.valueOf(i));
+
+        }
+
+        assertEquals(false, arr1.equals(arr2));
+    }
+
+    @Test
+    public void testEqualsSameGenericTypeWithSameLength() {
+        ArrayDeque<String> arr1 = new ArrayDeque<>();
+        ArrayDeque<String> arr2 = new ArrayDeque<>();
+
+        for (int i = 0; i < 100; i++) {
+            arr1.addFirst(String.valueOf(i));
+            arr2.addFirst(String.valueOf(i));
+        }
+        assertEquals(true, arr1.equals(arr2));
+    }
+
+    @Test
+    public void testEqualsSameGenericTypeWithDifferentLength() {
+        ArrayDeque<String> arr1 = new ArrayDeque<>();
+        ArrayDeque<String> arr2 = new ArrayDeque<>();
+
+        for (int i = 0; i < 100; i++) {
+            arr1.addFirst(String.valueOf(i));
+        }
+
+        for (int i = 0; i < 50; i++) {
+            arr2.addFirst(String.valueOf(i));
+
+        }
+
+        assertEquals(false, arr1.equals(arr2));
+    }
+
+    @Test
+    public void testEqualsAsSameObject() {
+        ArrayDeque<String> arr1 = new ArrayDeque<>();
+
+        assertEquals(true, arr1.equals(arr1));
+
+    }
+
+    @Test
+    public void d3() {
+        ArrayDeque<Integer> arr = new ArrayDeque<Integer>();
+        arr.isEmpty();
+        arr.addFirst(3);
+        System.out.println(arr.removeLast());
+        arr.addFirst(5);
+        arr.isEmpty();
+        System.out.println(arr.removeLast());
+
+    }
+
+    @Test
+    public void d5() {
+        ArrayDeque<Integer> arr = new ArrayDeque<Integer>();
+
+        arr.addLast(2);
+        System.out.println(arr.removeFirst());
+        arr.isEmpty();
+        arr.isEmpty();
+        arr.addLast(6);
+        System.out.println(arr.removeLast());
+    }
+
+    @Test
+    public void d6() {
+        ArrayDeque<Integer> arr = new ArrayDeque<Integer>();
+
+        arr.addLast(0);
+        System.out.println(arr.removeLast());
+        arr.size();
+        arr.addLast(3);
+        arr.isEmpty();
+        arr.addLast(5);
+        System.out.println(arr.removeLast());
+        arr.addLast(7);
+        System.out.println(arr.removeLast());
+        System.out.println(arr.removeFirst());
+    }
+
+    @Test
+    public void d11() {
+        ArrayDeque<Integer> arr = new ArrayDeque<Integer>();
+
+        arr.addFirst(0);
+        arr.addFirst(1);
+        System.out.println(arr.removeLast());
+        arr.addLast(3);
+        System.out.println(arr.get(1));
     }
 }

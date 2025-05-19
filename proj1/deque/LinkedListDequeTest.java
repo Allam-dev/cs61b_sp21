@@ -136,4 +136,94 @@ public class LinkedListDequeTest {
 
 
     }
+
+
+    @Test
+    public void testIterator() {
+        ArrayDeque<Integer> arr = new ArrayDeque<Integer>();
+        for (int i = 0; i <= 100; i++) {
+            arr.addLast(i);
+        }
+        arr.removeLast();
+        for (Integer x : arr) {
+            System.out.println(x);
+        }
+    }
+
+    @Test
+    public void testEqualsDifferentObject() {
+        LinkedListDeque<String> arr = new LinkedListDeque<>();
+        String x = "hi";
+        assertEquals(false, arr.equals(x));
+    }
+
+    @Test
+    public void testEqualsDifferentGenericTypeWithSameLength() {
+
+        LinkedListDeque<Integer> arr1 = new LinkedListDeque<>();
+        LinkedListDeque<String> arr2 = new LinkedListDeque<>();
+
+        for (int i = 0; i < 100; i++) {
+            arr1.addFirst(i);
+            arr2.addFirst(String.valueOf(i));
+        }
+        assertEquals(false, arr1.equals(arr2));
+
+    }
+
+    @Test
+    public void testEqualsDifferentGenericTypeWithDifferentLength() {
+        LinkedListDeque<Integer> arr1 = new LinkedListDeque<>();
+        LinkedListDeque<String> arr2 = new LinkedListDeque<>();
+
+        for (int i = 0; i < 100; i++) {
+            arr1.addFirst(i);
+        }
+
+        for (int i = 0; i < 50; i++) {
+            arr2.addFirst(String.valueOf(i));
+
+        }
+
+        assertEquals(false, arr1.equals(arr2));
+    }
+
+    @Test
+    public void testEqualsSameGenericTypeWithSameLength() {
+        LinkedListDeque<String> arr1 = new LinkedListDeque<>();
+        LinkedListDeque<String> arr2 = new LinkedListDeque<>();
+
+        for (int i = 0; i < 100; i++) {
+            arr1.addFirst(String.valueOf(i));
+            arr2.addFirst(String.valueOf(i));
+        }
+        assertEquals(true, arr1.equals(arr2));
+    }
+
+    @Test
+    public void testEqualsSameGenericTypeWithDifferentLength() {
+        LinkedListDeque<String> arr1 = new LinkedListDeque<>();
+        LinkedListDeque<String> arr2 = new LinkedListDeque<>();
+
+        for (int i = 0; i < 100; i++) {
+            arr1.addFirst(String.valueOf(i));
+        }
+
+        for (int i = 0; i < 50; i++) {
+            arr2.addFirst(String.valueOf(i));
+
+        }
+
+        assertEquals(false, arr1.equals(arr2));
+    }
+
+    @Test
+    public void testEqualsAsSameObject() {
+        LinkedListDeque<String> arr1 = new LinkedListDeque<>();
+
+        assertEquals(true, arr1.equals(arr1));
+
+    }
+
+
 }

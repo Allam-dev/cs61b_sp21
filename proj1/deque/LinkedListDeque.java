@@ -2,7 +2,7 @@ package deque;
 
 import java.util.Iterator;
 
-public class LinkedListDeque<T> implements Deque<T> {
+public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
     private int size;
     private Node<T> sentinel;
 
@@ -59,11 +59,15 @@ public class LinkedListDeque<T> implements Deque<T> {
 
 
     public T get(int index) {
-        Node<T> node = sentinel.next;
-        for (int i = 0; i < index; i++) {
-            node = node.next;
+        if (index >= size || index < 0) {
+            return null;
+        } else {
+            Node<T> node = sentinel.next;
+            for (int i = 0; i < index; i++) {
+                node = node.next;
+            }
+            return node.value;
         }
-        return node.value;
     }
 
 
@@ -77,8 +81,9 @@ public class LinkedListDeque<T> implements Deque<T> {
     }
 
     private T getRecursiveHelper(int index, Node<T> node) {
-        if (index == 0)
+        if (index == 0) {
             return node.value;
+        }
         return getRecursiveHelper(index - 1, node.next);
     }
 
@@ -102,7 +107,7 @@ public class LinkedListDeque<T> implements Deque<T> {
                 return false;
             }
             for (int i = 0; i < size; i++) {
-                if (get(i) != other.get(i)) {
+                if (!(get(i).equals(other.get(i)))) {
                     return false;
                 }
             }
