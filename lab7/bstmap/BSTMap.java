@@ -39,6 +39,8 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V> {
         return getRecursion(root, key);
     }
 
+    public void printInOrder(){}
+
     private V getRecursion(BSTNode<K, V> root, K key) {
         if (root == null) return null;
         if (root.key.compareTo(key) == 0) {
